@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container mt-5">
+    <a href="{% url 'earned' %}"></a>
+    <table class="table table-bordered border-primary">
+        <caption>
+            List of cards {%if message%}
+            <div>{{message}}</div>
+            {% endif %}
+            {%if sum%}
+            <div>{{sum}}</div>
+            {% endif %}
+        </caption>
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">name</th>
+                <th scope="col">amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in list %}
+            <tr>
+                <th scope="row">{{i.id}}</th>
+                <td>{{i.owner_name}}</td>
+                <td>{{i.total_price}}</td>
+                <td>
+                    <form action="{% url 'transfered' i.owner_name %}" method="POST">
+                        {% csrf_token %}
+                        <div data-mdb-input-init class="form-outline" style="width: 22rem">
+                            <input step="any" type="number" name="paid" class="form-control" />
+                            <label class="form-label" for="typeNumber">Paid</label>
+                        </div>
+                        <input type="submit" value="wargiraw" name="accepted" />
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

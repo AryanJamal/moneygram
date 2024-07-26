@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoneyGram</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <title>Update Status</title>
+    <script type="text/javascript">
+        window.onload = function () {
+            // Check if the update was successful
+            var success = "{{ success|escapejs }}";
+            if (success === "True") {
+                // Redirect to cards.html after 3 seconds
+                setTimeout(function () {
+                    window.location.href = "{% url 'reports' %}";
+                }, 2000);
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container grid">
+        <div class="column d-flex justify-content-center mt-5">
+            <h1>{{ message }}</h1>
+            
+        </div>
+        <div class="column d-flex justify-content-center mt-5">
+            <p>You will be redirected shortly...</p>
+        </div>
+        
+    </div>
+
+</body>
+
+</html>

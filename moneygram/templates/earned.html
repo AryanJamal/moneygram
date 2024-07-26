@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container mt-5">
+    {%if sum%}
+            <h3>Total: {{sum}}</h3>
+            {% endif %}
+    <table class="table table-bordered border-primary">
+        <caption>
+            List of cards {%if message%}
+            <div>{{message}}</div>
+            {% endif %}
+        </caption>
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">name</th>
+                <th scope="col">person</th>
+                <th scope="col">amount</th>
+                <th scope="col">code</th>
+                <th scope="col">Note..</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in list %}
+            <tr>
+                <th scope="row">{{i.id}}</th>
+                <td>{{i.owner_name}}</td>
+                <td>{{i.person_name}}</td>
+                <td>{{i.amounts}}</td>
+                <td>{{i.code}}</td>
+                <td>{{i.description}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
