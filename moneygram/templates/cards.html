@@ -1,56 +1,65 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<div class="container mt-5">
+  <h1 class="text-center">کارتەکان</h1><br>
+  <table class="table table-bordered border-primary ">
+    <caption>
+      List of cards
+      {%if message%}
+      <div>{{message}}</div>
+      {% endif %}
+      {%if sum%}
+      <div>{{sum}}</div>
+      {% endif %}
+    </caption>
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">خاوەن حساب</th>
+        <th scope="col">خاوەن کارت</th>
+        <th scope="col">بڕی پارە</th>
+        <th scope="col">کۆد</th>
+        <th scope="col">تێبینی</th>
+        <th scope="col">وەرگرتن</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in list %}
+      <tr>
+        <th scope="row">{{i.id}}</th>
+        <td>{{i.owner_name}}</td>
+        <td>{{i.person_name}}</td>
+        <td>{{i.amounts}}</td>
+        <td>{{i.code}}</td>
+        <td>{{i.description}}</td>
+        <td class="d-flex">
+          <form action="{% url 'accepted' i.id %}" method="POST">
+            {% csrf_token %}
+            <div class="d-flex">
+              <div data-mdb-input-init class="form-outline" style="width: 6rem;">
+                <input step="any" min="0" type="number" name="comision" class="form-control" />
+                <label class="form-label" for="typeNumber">Comision</label>
+              </div>
+              <div data-mdb-input-init class="form-outline" style="width: 6rem;">
+                <input type="number" name="paid" class="form-control" step="any" />
+                <label class="form-label" for="typeNumber">Paid</label>
+              </div>
+            </div>
+            <input class="btn btn-primary align-items-center" type="submit" value="وەرگرتن" name="accepted">
+          </form>
+          <div >
+            <form method="post" action="{% url 'delete_card' i.id%}">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-danger d-flex">سڕینەوە</button>
+          </form>
+          </div>
+          
+        </td>
 
-    <div class="container mt-5">
-      <h1 class="text-center">کارتەکان</h1><br>
-      <table class="table table-bordered border-primary ">
-        <caption>
-          List of cards
-          {%if message%}
-          <div>{{message}}</div>
-          {% endif %}
-          {%if sum%}
-          <div>{{sum}}</div>
-          {% endif %}
-        </caption>
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">خاوەن حساب</th>
-            <th scope="col">خاوەن کارت</th>
-            <th scope="col">بڕی پارە</th>
-            <th scope="col">کۆد</th>
-            <th scope="col">تێبینی</th>
-            <th scope="col">وەرگرتن</th>
-          </tr>
-        </thead>
-        <tbody>
-            {% for i in list %}
-            <tr>
-                <th scope="row">{{i.id}}</th>
-                <td>{{i.owner_name}}</td>
-                <td>{{i.person_name}}</td>
-                <td>{{i.amounts}}</td>
-                <td>{{i.code}}</td>
-                <td>{{i.description}}</td>
-                <td><form action="{% url 'accepted' i.id %}" method="POST">
-                    {% csrf_token %}
-                    <div data-mdb-input-init class="form-outline" style="width: 22rem;">
-                        <input step="any" min="0" type="number" name="comision" class="form-control" />
-                        <label class="form-label" for="typeNumber">Comision</label>
-                    </div>
-                    <div data-mdb-input-init class="form-outline" style="width: 22rem;">
-                        <input type="number" name="paid" class="form-control" step="any"/>
-                        <label class="form-label" for="typeNumber">Paid</label>
-                    </div>
-                    <input type="submit" value="wargiraw" name="accepted">
-                </form></td>
-                
-            </tr>
-            {% endfor %}
-        </tbody>
-      </table>
-    </div>
-    {% endblock %}
-
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% block content %}
-
 <div class="container mt-5">
     <h1 class="text-center">کارتە وەرگیراوەکان</h1><br>
     {%if sum%}
@@ -20,6 +19,7 @@
             <th scope="col">بڕی پارە</th>
             <th scope="col">کۆد</th>
             <th scope="col">تێبینی</th>
+            <th scope="col">سڕینەوە</th>
             </tr>
         </thead>
         <tbody>
@@ -31,6 +31,12 @@
                 <td>{{i.amounts}}</td>
                 <td>{{i.code}}</td>
                 <td>{{i.description}}</td>
+                <td>
+                    <form method="post" action="{% url 'delete_card' i.id%}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger align-items-center">سڕینەوە</button>
+                    </form>
+                </td>
             </tr>
             {% endfor %}
         </tbody>

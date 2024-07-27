@@ -1,32 +1,34 @@
 {% extends 'base.html' %}
 {% block content %}
-
-<div class="container mt-5">
+<div class="container p-5 text-center">
+  <div class="card bg-dark text-white p-5" style="border-radius: 1rem;">
   <h1 class="text-center">دروستکردنی کارت</h1>
   <form method="POST" action="">
     {% csrf_token %}
     <div class="form-group mt-3">
       <label for="formGroupExampleInput">خاوەن حساب</label>
-      <input type="text" class="form-control" name="owner_name" id="owner_name" placeholder="Owner Name:">
+      <input type="text" class="form-control mt-2" name="owner_name" id="owner_name" placeholder="Owner Name:">
     </div>
     <div class="form-group mt-3">
       <label for="formGroupExampleInput2">خاوەن کارت</label>
-      <input type="text" class="form-control" name="person_name" id="person_name" placeholder="Person Name:">
+      <input type="text" class="form-control mt-2" name="person_name" id="person_name" placeholder="Person Name:">
     </div>
     <div class="form-group mt-3">
       <label for="formGroupExampleInput">کۆدی کارت</label>
-      <input type="text" class="form-control" name="code" id="code" placeholder="Code:">
+      <input type="text" class="form-control mt-2" name="code" id="code" placeholder="Code:">
     </div>
     <div class="form-group mt-3">
       <label for="formGroupExampleInput">بڕی پارە</label>
-      <input type="text" class="form-control" name="amounts" id="amounts" placeholder="Amounts:">
+      <input type="text" class="form-control mt-2" name="amounts" id="amounts" placeholder="Amounts:">
     </div>
     <div class="form-group mt-3">
       <label for="formGroupExampleInput2">تێبینی</label>
-      <input type="text" class="form-control" name="description" id="description" placeholder="Note..">
+      <input type="text" class="form-control mt-2" name="description" id="description" placeholder="Note..">
     </div>
-    {{message}}
-    <button type="submit" class="btn btn-primary">دروستکردن</button>
+    <button type="submit" class="btn btn-primary mt-3">دروستکردن</button>
+    <div class="text-center text-primary">{{message}}</div>
   </form>
+</div>
+</div>
 </div>
 {% endblock %}

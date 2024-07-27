@@ -9,4 +9,7 @@ urlpatterns = [
     path("transfer/", views.transfer, name="transfer"),
     path("transfer/<str:name>", views.transferd, name="transfered"),
     path("report/", views.report, name="reports"),
+    path("login/", views.login_view, name="login"),
+    path("logout/", views.logout_view, name="logout"),
+    path("delete_card/<int:pk>/", views.delete_card, name="delete_card"),
 ]

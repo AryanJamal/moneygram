@@ -3,19 +3,20 @@
         <a class="navbar-brand" href="{% url 'earned' %}">
             <img src="https://www.svgrepo.com/show/524750/money-bag.svg" alt="Bootstrap" width="30" height="24">
           </a>      
-        <a class="navbar-brand" href="{% url 'earned' %}">MoneyGram</a>
+        <a class="navbar-brand" href="{% url 'earned' %}">کارتەکان</a>
         <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
             aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="navbar-collapse collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
+            <div class="navbar-nav text-end">
                 <a class="nav-link active" aria-current="page" href="{% url 'index' %}">دروستکردن</a>
                 <a class="nav-link" href="{% url 'cards' %}">کارتەکان</a>
                 <a class="nav-link" href="{% url 'earned' %}">وەرگیراو</a>
                 <a class="nav-link" href="{% url 'transfer' %}">گواستنەوە</a>
                 <a class="nav-link" href="{% url 'reports' %}">ڕاپۆرت</a>
+                <a class="nav-link" href="{% url 'logout' %}">چوونەدەرەوە</a>
             </div>
         </div>
     </div>

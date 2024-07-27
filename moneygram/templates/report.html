@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
-
 <div class="container mt-5">
     <h1 class="text-center">ڕاپۆرت</h1><br>
     <a href="{% url 'earned' %}"></a>
+    
     <table class="table table-bordered border-primary">
         <caption>
             List of cards {%if message%}
@@ -15,9 +15,22 @@
         </caption>
         <thead>
             <tr>
+                <th></th>
+                <th></th>
+                <th>{{sumTotal}}</th>
+                <th>{{sumCom }}</th>
+                <th>{{sum3m }}</th>
+                <th>{{sumNa }}</th>
+                <th></th>
+            </tr>
+            <tr>
                 <th scope="col">#</th>
                 <th scope="col">خاوەن حساب</th>
                 <th scope="col">بڕی حساب</th>
+                <th scope="col">کۆمیسیۆن</th>
+                <th scope="col">عمولەی وەرگرتن</th>
+                <th scope="col">عمولەی ناردنەوە</th>
+                <th scope="col">بەروار</th>
             </tr>
         </thead>
         <tbody>
@@ -26,9 +39,15 @@
                 <th scope="row">{{i.id}}</th>
                 <td>{{i.owner_name}}</td>
                 <td>{{i.total_price}}</td>
+                <td>{{i.comision}}</td>
+                <td>{{i.paid}}</td>
+                <td>{{i.paidtwo}}</td>
+                <td>{{i.updated_at}}</td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
 </div>
+
+
 {% endblock %}
